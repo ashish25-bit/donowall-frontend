@@ -1,11 +1,8 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Headers from './components/Headers';
-import LoginAdmin from './components/admin/Login';
-import SignupAdmin from './components/admin/Signup';
-import LoginUser from './components/user/Login';
-import SignupUser from './components/user/Signup';
+
+import Homepage from './components/Homepage'
 
 // redux store
 import { Provider } from 'react-redux'
@@ -16,12 +13,10 @@ function App() {
 		<Provider store={store}>
 			<Router>
          	<div className="App">
-					<Headers />
-					<Switch>
-						<Route exact path='/admin/login' component={LoginAdmin} />
-                  <Route exact path='/admin/signup' component={SignupAdmin} />
-                  <Route exact path='/user/login' component={LoginUser} />
-                  <Route exact path='/user/signup' component={SignupUser} />
+					
+				<Switch>
+					<Route exact path="/" component={Homepage}></Route>
+
                </Switch>
             </div>
          </Router>
