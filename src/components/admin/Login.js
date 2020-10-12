@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDom from 'react-dom';
 
 const Login = ({ onClose }) => {
-
-	const submitHandler = e => {
+    
+    const submitHandler = e => {
         e.preventDefault();
     }
-
+    
     return ReactDom.createPortal(<>
         <div className="overlay"></div>
         <div className="login-form">
@@ -22,7 +22,7 @@ const Login = ({ onClose }) => {
 					<path fillRule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 				</svg>
 			</div>
-        	<h4>Login User</h4>
+        	<h4>Login Admin</h4>
         	<form onSubmit={submitHandler}>
             	<div className="form-group">
 					<label htmlFor="email">Email address</label>
