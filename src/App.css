@@ -1,3 +1,32 @@
+:root {
+  --form-icon: #888;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+body {
+  overflow-x: hidden;
+}
+body, input, button, textarea {
+  font-family: 'Poppins', sans-serif;
+}
+a { 
+  text-decoration: none;
+}
+input, button, textarea {
+  outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .login-form{
     position: fixed;
     top: 50%;
