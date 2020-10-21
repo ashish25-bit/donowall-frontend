@@ -5,7 +5,8 @@ import {
     LOGIN_SUCCESS, 
     LOGIN_FAIL,
     USER_LOADED,
-    AUTH_ERROR
+    AUTH_ERROR,
+    LOGOUT
 } from './types';
 
 export const loadUser = () => async dispatch => {
@@ -21,7 +22,7 @@ export const loadUser = () => async dispatch => {
         
         dispatch({
             type: USER_LOADED,
-            payload: res.data
+            payload: { user: res.data, typeToken }
         });
         console.log(res.data);
     }
@@ -41,13 +42,23 @@ export const login = (formData, type) => async dispatch => {
     try {
         const res = await api.post(endpoint, body, json);
         console.log(res.data);
+        
+        const { typeToken } = await getUserType(res.data.token);
+
         dispatch({
             type: LOGIN_SUCCESS,
-            payload: res.data
+            payload: { ...res.data, typeToken }
         });
+        
+        dispatch(loadUser());
     }
     catch (err) {
         console.log(err);
         dispatch({ type: LOGIN_FAIL });
     }
+}
+
+// logout
+export const logout = () => dispatch => {
+    dispatch({ type: LOGOUT })
 }

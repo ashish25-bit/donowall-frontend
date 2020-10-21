@@ -1,5 +1,6 @@
 import axios from 'axios';
-// import store from '../store';
+import store from '../store';
+import { LOGOUT } from '../actions/types';
 
 // dev -> http://localhost:5000/api
 // production -> https://api-donowall.herokuapp.com/api
@@ -11,8 +12,8 @@ api.interceptors.response.use(
     res => res,
     err => {
       if (err.response.status === 401) {
-        // store.dispatch({ type: LOGOUT });
-        console.log('logout');
+        store.dispatch({ type: LOGOUT });
+        // console.log('logout');
       }
       return Promise.reject(err);
     }
