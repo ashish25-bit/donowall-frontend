@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import ReactDom from 'react-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { login, loadUser } from '../../actions/auth';
+import { login } from '../../actions/auth';
 
-const Login = ({ onClose, login, loadUser }) => {
+const Login = ({ onClose, login }) => {
 	const [formData, setFormData] = useState({
 		email: "ashishyoel23@gmail.com",
 		password: "123456"
@@ -40,6 +40,7 @@ const Login = ({ onClose, login, loadUser }) => {
 					<label htmlFor="email">Email address</label>
 					<span>
 						<svg 
+							style={{ marginTop: "5px" }}
 							width="1.5em" 
 							height="1.5em" 
 							viewBox="0 0 16 16" 
@@ -97,7 +98,6 @@ const Login = ({ onClose, login, loadUser }) => {
        				<button className='btn login-btn'>Register</button>
 				</div>	
 			</form>
-			<button onClick={() => loadUser()}>Get User Type</button>
         </div>
         </>,
         document.getElementById('form')
@@ -107,7 +107,6 @@ const Login = ({ onClose, login, loadUser }) => {
 Login.propTypes = {
 	login: PropTypes.func.isRequired,
 	onClose: PropTypes.func,
-	loadUser: PropTypes.func
 };
 
-export default connect(null, { login, loadUser })(Login);
+export default connect(null, { login })(Login);

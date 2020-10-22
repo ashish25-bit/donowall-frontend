@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-// import Main from './components/Main'
-// import Redirect from './components/HomePage';
 import Routes from './components/routes/Routes';
 
 // redux store
@@ -16,19 +14,15 @@ import sethAuthToken from './utils/setAuthToken';
 const App = () => {
 
 	useEffect(() => {
-		if (localStorage.token) {
+		if (localStorage.token) 
 			sethAuthToken(localStorage.token);
-			store.dispatch(loadUser());
-		}
+		store.dispatch(loadUser());
 	}, []);
 
 	return (
 		<Provider store={store}>
 			<Router>
-				{/* <Route component={} /> */}
 				<Switch>
-					{/* <Route exact path="/" component={Main} />
-					<Route exact path='/home' component={Redirect} /> */}
 					<Route component={Routes} />
 				</Switch>
 			</Router>

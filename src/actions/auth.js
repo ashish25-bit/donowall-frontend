@@ -12,26 +12,30 @@ import {
 export const loadUser = () => async dispatch => {
     const data = localStorage.getItem('token');
 
-    try {
-        const { typeToken } = await getUserType(data);
-        const endpoint = typeToken === adminTypeToken ? 
-            "/admin/auth" : 
-            "/user/auth";
-        
-        const res = await api.get(endpoint);
-        
-        dispatch({
-            type: USER_LOADED,
-            payload: { user: res.data, typeToken }
-        });
-        console.log(res.data);
+    if (data) {
+        try {
+            const { typeToken } = await getUserType(data);
+            const endpoint = typeToken === adminTypeToken ? 
+                "/admin/auth" : 
+                "/user/auth";
+            
+            const res = await api.get(endpoint);
+            
+            dispatch({
+                type: USER_LOADED,
+                payload: { user: res.data, typeToken }
+            });
+            console.log(res.data);
+        }
+        catch (err) {
+            console.log(err.message);
+            dispatch({
+                type: AUTH_ERROR
+            });
+        }
     }
-    catch (err) {
-        console.log(err.message);
-        dispatch({
-            type: AUTH_ERROR
-        });
-    }
+    else
+        dispatch({ type: LOGOUT });
 }
 
 export const login = (formData, type) => async dispatch => {
