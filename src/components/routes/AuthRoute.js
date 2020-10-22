@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
+import { adminTypeToken } from '../../utils/getUserType';
 
 const AuthRoute = ({
     component: Component,
-    auth: { isAuthenticated },
+    auth: { isAuthenticated, typeToken },
     ...rest
 }) => {
+    const redirect = typeToken === adminTypeToken ? '/admin/home' : '/user/home';
+    
     return (
         <Route 
             {...rest}
@@ -17,7 +20,7 @@ const AuthRoute = ({
                 ) : !isAuthenticated ? (
                     <h2>Loading...</h2>
                 ) : (
-                    <Redirect to='/home' />
+                    <Redirect to={redirect} />
                 )
             }
         />

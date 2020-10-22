@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import LoginUser from './user/Login';
 import LoginAdmin from './admin/Login';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-// import { getUserType, userTypeToken } from '../utils/getUserType';
-import { Redirect } from 'react-router-dom';
+// import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
+// import { userTypeToken, adminTypeToken } from '../utils/getUserType';
+// import { Redirect } from 'react-router-dom';
 
-const Main = ({ isAuthenticated }) => {
+const Main = ({ isAuthenticated, typeToken }) => {
     const [currentForm, setCurrentForm] = useState(-1);
 
-    if (isAuthenticated) 
-        return (
-            <Redirect to='/home' />
-        )
+    // if (isAuthenticated) {
+    //     if (typeToken === userTypeToken)
+    //         return <Redirect to='/user/home' />
+        
+    //     if (typeToken === adminTypeToken)
+    //         return <Redirect to='/admin/home' />
+    // }
 
     return (
         <div>
@@ -24,12 +27,15 @@ const Main = ({ isAuthenticated }) => {
     )
 }
 
-Main.propTypes = {
-    isAuthenticated: PropTypes.bool
-};
+// Main.propTypes = {
+//     isAuthenticated: PropTypes.bool,
+//     typeToken: PropTypes.string
+// };
 
-const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated
-})
+// const mapStateToProps = state => ({
+//     isAuthenticated: state.auth.isAuthenticated,
+//     typeToken: state.auth.typeToken
+// })
 
-export default connect(mapStateToProps)(Main);
+// export default connect(mapStateToProps, {})(Main);
+export default Main;
