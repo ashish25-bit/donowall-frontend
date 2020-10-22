@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import LoginUser from './user/Login';
 import LoginAdmin from './admin/Login';
+import AdminSignup from './admin/Signup';
 // import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
 // import { userTypeToken, adminTypeToken } from '../utils/getUserType';
@@ -18,11 +19,14 @@ const Main = ({ isAuthenticated, typeToken }) => {
     // }
 
     return (
-        <div>
+        <div className='home-btn-container'>
             <button onClick={()=>setCurrentForm(1)}>Login User</button>
             <button onClick={()=>setCurrentForm(2)}>Login Admin</button>
-            { currentForm === 1 && <LoginUser onClose={()=> setCurrentForm(-1)}/> }
-            { currentForm === 2 && <LoginAdmin onClose={()=> setCurrentForm(-1)}/> }
+            <button>Signup User</button>
+            <button onClick={()=>setCurrentForm(4)}>Signup Admin</button>
+            { currentForm === 1 && <LoginUser onClose={()=> setCurrentForm(-1)} /> }
+            { currentForm === 2 && <LoginAdmin onClose={()=> setCurrentForm(-1)} /> }
+            { currentForm === 4 && <AdminSignup onClose={() => setCurrentForm(-1)} /> }
         </div>
     )
 }

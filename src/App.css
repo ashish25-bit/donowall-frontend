@@ -1,94 +1,146 @@
 :root {
 	--form-icon: #888;
+	--main-red: #d84242;
 }
 
 * {
 	margin: 0;
 	padding: 0;
 }
+
 body {
 	overflow-x: hidden;
 }
+
 body, input, button, textarea {
 	font-family: 'Poppins', sans-serif;
 }
+
 a { 
 	text-decoration: none;
 }
-input, button, textarea {
+
+input, textarea {
 	outline: none;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
 }
+
 input[type=number] {
 	-moz-appearance: textfield;
 }
 
-.login-form{
+button {
+	cursor: pointer;
+	outline: none;
+	user-select: none;
+}
+
+/* 
+	LOGIN FORM 
+*/
+
+.overlay {
 	position: fixed;
+	top: 0;
+	width: 100%;
+	min-height: 100vh;
+	background-color: rgba(0, 0, 0, .7);
+	z-index: 1000;
+}
+.login-form {
+	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
 	z-index: 1000;
 	background-color: rgb(255, 255, 255);
 	padding: 30px;
-	width: 30%;
+	border-radius: 10px;
+	width: 600px;
 }
-.overlay{
-	position: fixed;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	background-color: rgba(0, 0, 0, .7);
-	z-index: 1000;
-}
-.close{
-	cursor: pointer;
+
+@media screen and (max-width: 661px) {
+	.login-form {
+		width: 90%;
+	}
+} 
+
+.login-form .close {
 	left: 2px;
 	size: 10px;
+	cursor: pointer;
 }
-.login-btn{
+.login-form .close:hover {
+	color: var(--main-red);
+}
+
+.login-form .form-control {
+	padding-left: 30px;
+	border-radius: 5px;
+}
+.login-form .form-control:focus {
+	border-color: var(--main-red);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+.login-form .form-group label {
+	font-size: 15px;
+	color: var(--form-icon);
+}
+
+.login-form .login-btn {
 	width: 80%;
 	background-color: rgb(216, 66, 66);
 	margin: 10px;
 	border-radius: 10px;
 	color: white;
+	text-transform: uppercase;
 }
-.login-form{
-  border-radius: 1	0px;
+.login-form h4 {
+	color: var(--main-red);
+	text-transform: uppercase;
 }
-h4 {
-	color: red;
-}
-
-form {
-	justify-content: center;
-}
-span{
+.login-form .form-group span {
 	position: absolute;
-	margin-left: 5px;
-	margin-top: 5px;
-	margin-right: 5px;
+	margin: 5px 5px 0;
 	height: 25px;
 	display: flex;
 	align-items: center;
 }
-.form-control{
-	padding-left: 30px;
-	border-radius: 5px;
-}
-.form-control:focus{
-	border-color: red;
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
-}
-.close:hover{
-	color: red;
-}
-.form-group svg {
+.login-form .form-group svg {
 	width: 19px;
 }
-  
+
+
+/* 
+	MAIN PAGE
+*/
+.home-btn-container {
+	width: 60%;
+	margin: 0 auto;
+	padding: 100px 0;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 20px;
+}
+
+@media screen and (max-width: 500px) {
+	.home-btn-container {
+		width: 80%;
+	}
+} 
+
+.home-btn-container button {
+	padding: 10px 0;
+	border: none;
+	background: var(--main-red);
+	text-transform: uppercase;
+	color: #fff;
+	border-radius: 10px;
+	outline: none;
+}
