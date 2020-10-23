@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Main from '../Main'
-import HomePage from '../HomePage';
+import Homepage from '../Homepage';
 import AdminHome from '../admin/Home';
 import UserHome from '../user/Home';
 import PrivateRouteC from './PrivateRouteC';
@@ -15,7 +15,7 @@ const Routes = () => {
         <div>
             <Switch>
                 <AuthRoute exact path='/' component={Main} />
-                <PrivateRouteC exact path='/home' component={HomePage} />
+                <PrivateRouteC exact path='/home' component={Homepage} />
                 <AdminPrivateRoute exact path='/admin/home' component={AdminHome} />
                 <UserPrivateRoute exact path='/user/home' component={UserHome} />
                 <Route path='*' component={NotFound} />
