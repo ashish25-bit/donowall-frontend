@@ -8,7 +8,7 @@ import PrivateRouteC from './PrivateRouteC';
 import AuthRoute from './AuthRoute';
 import AdminPrivateRoute from './AdminPrivateRoute';
 import UserPrivateRoute from './UserPrivateRoute';
-import NotFound from '../NotFound';
+import NotFound from '../layouts/NotFound';
 
 const Routes = () => {
     return (

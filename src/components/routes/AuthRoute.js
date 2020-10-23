@@ -2,15 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
-import { adminTypeToken } from '../../utils/getUserType';
+import { adminTypeToken, userTypeToken } from '../../utils/getUserType';
+import Spinner from '../layouts/Spinner';
 
 const AuthRoute = ({
     component: Component,
     auth: { isAuthenticated, typeToken },
     ...rest
 }) => {
-    const redirect = typeToken === adminTypeToken ? '/admin/home' : '/user/home';
+    let redirect = '/';
     
+    if (typeToken === adminTypeToken)
+        redirect = '/admin/home';
+    
+    if (typeToken === userTypeToken)
+        redirect = '/user/home';
+
     return (
         <Route 
             {...rest}
@@ -18,7 +25,7 @@ const AuthRoute = ({
                 localStorage.getItem('token') === null ? (
                     <Component {...props} /> 
                 ) : !isAuthenticated ? (
-                    <h2>Loading...</h2>
+                    <Spinner />
                 ) : (
                     <Redirect to={redirect} />
                 )

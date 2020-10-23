@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { adminTypeToken, userTypeToken } from '../utils/getUserType';
+import { adminTypeToken, userTypeToken } from '../../utils/getUserType';
 
 function NotFound({ typeToken }) {
 
@@ -12,7 +12,7 @@ function NotFound({ typeToken }) {
     else if (userTypeToken === typeToken)
         redirectURI = '/user/home';
     else 
-        redirectURI = '/'
+        redirectURI = '/';
 
     return (
         <div>

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import Header from './components/layouts/Header';
 import Routes from './components/routes/Routes';
 
 // redux store
@@ -22,6 +23,7 @@ const App = () => {
 	return (
 		<Provider store={store}>
 			<Router>
+				<Header />
 				<Switch>
 					<Route component={Routes} />
 				</Switch>

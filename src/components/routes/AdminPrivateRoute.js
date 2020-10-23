@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import { adminTypeToken } from '../../utils/getUserType';
-import NotFound from '../NotFound';
+import NotFound from '../layouts/NotFound';
+import Spinner from '../layouts/Spinner';
 
 const AdminPrivateRoute = ({
     component: Component, 
@@ -20,7 +21,7 @@ const AdminPrivateRoute = ({
             {...rest}
             render={props =>
                 loading ? (
-                    <h2>Loading...</h2>
+                    <Spinner />
                 ) : isAuthenticated ? (
                     <Component {...props} />
                 ) : (
