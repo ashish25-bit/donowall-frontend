@@ -10,7 +10,7 @@ const UserPrivateRoute = ({
     auth: { isAuthenticated, loading, typeToken },
     ...rest
 }) => {
-    const status = typeToken === userTypeToken ? true : false;
+    const status = loading || typeToken === userTypeToken ? true : false;
 
     if (!status)
         return <NotFound />

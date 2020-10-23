@@ -10,7 +10,7 @@ const AdminPrivateRoute = ({
     auth: { isAuthenticated, loading, typeToken },
     ...rest
 }) => {
-    const status = typeToken === adminTypeToken ? true : false;
+    const status = loading || typeToken === adminTypeToken ? true : false;
 
     if (!status)
         return <NotFound />
