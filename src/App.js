@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './css/App.css';
 import './css/Profile.css'
+import './css/Home.css'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Header from './components/layouts/Header';

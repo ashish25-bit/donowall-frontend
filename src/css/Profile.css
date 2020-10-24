@@ -36,6 +36,7 @@
     z-index: 10;
     padding: 0 5px;
     color: var(--lable-color);
+    z-index: 8;
 }
 .user.profile-container .info-container a {
     color: #fff;

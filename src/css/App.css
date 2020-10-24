@@ -57,7 +57,7 @@ p {
 	grid-template-columns: repeat(3, 1fr);
 	position: fixed;
 	top: 0;
-	z-index: 10;
+	z-index: 1000;
 }
 
 .header button {
@@ -126,6 +126,7 @@ p {
 	width: 100%;
 	background: var(--main-red);
 	border-radius: 0 0 40px 40px;
+	z-index: 999;
 }
 
 /* 

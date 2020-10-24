@@ -20,7 +20,7 @@ const UserPrivateRoute = ({
         <Route
             {...rest}
             render={props =>
-                loading ? (
+                loading && localStorage.getItem('token') !== null ? (
                     <Spinner />
                 ) : isAuthenticated ? (
                     <div className='main-container'>

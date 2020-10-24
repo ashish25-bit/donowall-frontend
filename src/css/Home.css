@@ -1,0 +1,67 @@
+/*
+    USER STYLING
+*/
+.home-container {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.user.home-container .list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 20px;
+    text-align: center;
+}
+.user.home-container .list-container .list {
+    overflow: hidden;
+    border-radius: 15px;
+    max-height: 300px;
+    position: relative;
+    box-shadow: 0 0 10px #b7b7b7;
+}
+.user.home-container .list .image-con {
+    overflow: hidden;
+    pointer-events: none;
+    min-height: 200px;
+    background-image: url('../assets/loader.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 10px;
+}
+.user.home-container .list .image-con img {
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+.user.home-container .list .info-con {
+    position: absolute;
+    bottom: 0;
+    z-index: 100;
+    background: #fff;
+    width: 100%;
+    overflow: hidden;
+    border-top-right-radius: 70px;
+    height: 100%;
+    transform: translateY(80%);
+    transition: all 0.5s ease;
+}
+
+.user.home-container .list .info-con p:nth-child(1) {
+    color: var(--main-red);
+    padding: 10px 0 30px;
+    width: 90%;
+    margin: 0 auto;
+    border-bottom: 2px solid var(--main-red);
+    font-size: 13px;
+}
+
+.user.home-container .list:hover > .info-con {
+    transform: translateY(0);
+}
+
+@media screen and (max-width: 450px) {
+    .user.home-container .list-container {
+        grid-template-columns: 1fr;
+    }
+}
