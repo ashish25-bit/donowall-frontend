@@ -21,14 +21,19 @@
     flex: 2;
 }
 
-.user.profile-container .info-container .fieldset {
+.user.profile-container .info-container .fieldset,
+.user.profile-edit .fieldset {
     position: relative;
     border: 1px solid var(--lable-color);
     padding: 10px 15px;
     border-radius: 10px;
     margin-bottom: 25px;
 }
-.user.profile-container .info-container .fieldset span {
+.user.profile-edit .fieldset {
+    padding: 0 15px;
+}
+.user.profile-container .info-container .fieldset span,
+.user.profile-edit .fieldset span {
     position: absolute;
     top: -13px;
     left: 10px;
@@ -37,6 +42,7 @@
     padding: 0 5px;
     color: var(--lable-color);
     z-index: 8;
+    user-select: none;
 }
 .user.profile-container .info-container a {
     color: #fff;
@@ -44,4 +50,38 @@
     padding: 10px 15px 12px;
     display: inline-block;
     text-transform: uppercase;
+}
+
+/*
+    USER PROFILE EDIT
+*/
+.profile-edit {
+    width: 90%;
+    margin: 0 auto;
+}
+.profile-edit > h2 {
+    color: var(--lable-color);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.profile-edit > h2 img {
+    width: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+.user.profile-edit .fieldset input {
+    padding: 15px 0 12px;
+    width: 100%;
+    border: none;
+    outline: none;
+}
+.user.profile-edit button {
+    background: var(--main-red);
+    padding: 10px 25px;
+    border: none;
+    border-radius: 10px;
+    text-transform: uppercase;
+    color: #fff;
+    outline: none;
 }

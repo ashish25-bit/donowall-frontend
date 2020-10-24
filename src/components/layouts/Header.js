@@ -6,6 +6,7 @@ import { ReactComponent as Hamburger } from '../../assets/hamburger.svg';
 import { adminTypeToken, userTypeToken } from '../../utils/getUserType';
 import { logout } from '../../actions/auth';
 import Slider from './Slider';
+import url from '../../utils/url';
 
 const Header = ({
     logout, 
@@ -23,11 +24,11 @@ const Header = ({
     if (!isAuthenticated && !localStorage.getItem('token'))
         return <div></div>
 
-    let homePageUrl = '/';
+    let homePageUrl = url.authRoute;
     if (adminTypeToken === typeToken)
-        homePageUrl =  "/admin/home";
+        homePageUrl =  url.homeAdmin;
     if (userTypeToken === typeToken)
-        homePageUrl = "/user/home";
+        homePageUrl = url.homeUser;
 
     const toggleState = () => setIsExtrasOpen(prevState => !prevState);
 
@@ -74,7 +75,7 @@ function divisionThird(typeToken, user, logout, isExtrasOpen, toggleState) {
                 { isExtrasOpen &&
                 <div className='extras'>
                     <Link 
-                        to='/' 
+                        to={url.authRoute} 
                         onClick={() =>{ toggleState(); logout(); }}
                     >logout</Link>
                 </div> }
@@ -88,9 +89,9 @@ function divisionThird(typeToken, user, logout, isExtrasOpen, toggleState) {
                 <div onClick={toggleState}> <img width="40px" src={user.image_url} alt="user-avataar" /> </div>
                 { isExtrasOpen &&
                 <div className='extras'>
-                    <Link to='/user/profile' onClick={toggleState}>profile</Link>
+                    <Link to={url.userProfile} onClick={toggleState}>profile</Link>
                     <Link 
-                        to='/' 
+                        to={url.authRoute} 
                         onClick={() =>{ toggleState(); logout(); }}
                     >logout</Link>
                 </div> }

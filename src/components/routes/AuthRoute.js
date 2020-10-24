@@ -4,19 +4,20 @@ import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import { adminTypeToken, userTypeToken } from '../../utils/getUserType';
 import Spinner from '../layouts/Spinner';
+import url from '../../utils/url';
 
 const AuthRoute = ({
     component: Component,
     auth: { isAuthenticated, typeToken },
     ...rest
 }) => {
-    let redirect = '/';
+    let redirect = url.authRoute;
     
     if (typeToken === adminTypeToken)
-        redirect = '/admin/home';
+        redirect = url.homeAdmin;
     
     if (typeToken === userTypeToken)
-        redirect = '/user/home';
+        redirect = url.homeUser;
 
     return (
         <Route 

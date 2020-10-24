@@ -45,7 +45,7 @@ const Profile = ({ user }) => {
                     <p>{user.mobile_no}</p>
                 </div>
 
-                <Link to='/user/home'>
+                <Link to='/user/profile/edit'>
                     <svg 
                         width="20" height="20" 
                         viewBox="0 0 49 49" 
