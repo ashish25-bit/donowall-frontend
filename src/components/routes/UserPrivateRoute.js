@@ -23,7 +23,9 @@ const UserPrivateRoute = ({
                 loading ? (
                     <Spinner />
                 ) : isAuthenticated ? (
-                    <Component {...props} />
+                    <div className='main-container'>
+                        <Component {...props} />
+                    </div>
                 ) : (
                     <Redirect to='/' />
                 )

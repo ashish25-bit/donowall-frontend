@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import './App.css';
+import './css/App.css';
+import './css/Profile.css'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Header from './components/layouts/Header';

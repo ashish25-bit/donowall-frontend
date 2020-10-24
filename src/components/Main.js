@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import LoginUser from './user/Login';
 import LoginAdmin from './admin/Login';
 import AdminSignup from './admin/Signup';
+import useTitle from '../utils/useTitle';
 // import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
 // import { userTypeToken, adminTypeToken } from '../utils/getUserType';
@@ -9,7 +10,7 @@ import AdminSignup from './admin/Signup';
 
 const Main = ({ isAuthenticated, typeToken }) => {
     const [currentForm, setCurrentForm] = useState(-1);
-
+    useTitle('Donowall');
     // if (isAuthenticated) {
     //     if (typeToken === userTypeToken)
     //         return <Redirect to='/user/home' />

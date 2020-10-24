@@ -1,12 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../utils/useTitle';
 
 function Home() {
+    useTitle('Welcome to Donowall');
     return (
-        <Fragment>
+        <div>
             <h1>User Home Page</h1>
             <Link to='/home'>Common Home Page</Link>
-        </Fragment>
+        </div>
     )
 }
 

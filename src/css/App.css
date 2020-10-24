@@ -2,6 +2,7 @@
 	--form-icon: #888;
 	--main-red: #da2828;
 	--input-focus: #da2828b8;
+	--lable-color: #5F5F5F;
 }
 
 * {
@@ -40,6 +41,9 @@ button {
 	outline: none;
 	user-select: none;
 }
+p {
+	margin-bottom: 0;
+}
 
 /* 
 	header 
@@ -51,6 +55,9 @@ button {
 	padding: 10px 20px 15px;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
+	position: fixed;
+	top: 0;
+	z-index: 10;
 }
 
 .header button {
@@ -77,6 +84,7 @@ button {
 	grid-template-columns: repeat(2, 1fr);
 	align-items: center;
 	grid-gap: 10px;
+	position: relative;
 }
 .header .user-img-container small {
 	color: #fff;
@@ -87,6 +95,37 @@ button {
 	overflow: hidden;
 	border-radius: 50%;
 	cursor: pointer;
+}
+.header .user-img-container .extras {
+	width: 150px;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-32%);
+	text-align: left;
+	overflow: hidden;
+}
+.header .user-img-container .extras a {
+	text-transform: uppercase;
+	padding: 5px 10px;
+	border-bottom: 1px solid var(--main-red);
+	color: var(--main-red);
+	display: block;
+}
+
+/*
+	SLIDER
+*/
+.slider {
+	position: fixed;
+	min-height: 90vh;
+	top: 0px;
+	width: 100%;
+	background: var(--main-red);
+	border-radius: 0 0 40px 40px;
 }
 
 /* 
@@ -205,4 +244,11 @@ button {
 	color: #fff;
 	border-radius: 10px;
 	outline: none;
+}
+
+/*
+	MAIN CONTAINER 
+*/
+.main-container {
+    margin-top: 100px;
 }

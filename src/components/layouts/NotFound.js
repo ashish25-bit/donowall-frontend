@@ -15,7 +15,7 @@ function NotFound({ typeToken }) {
         redirectURI = '/';
 
     return (
-        <div>
+        <div className='main-container'>
             <h1>Page No Found</h1>
             <Link to={redirectURI}>Go To Home Page</Link>
         </div>

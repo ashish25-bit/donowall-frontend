@@ -1,0 +1,46 @@
+/* 
+    USER PROFILE
+*/
+.profile-container {
+    width: 80%;
+    margin: 0 auto;
+}
+.user.profile-container {
+    display: flex;
+    gap: 30px;
+}
+.user.profile-container .image-container {
+    flex: 1;
+    text-align: right;
+}
+.user.profile-container .image-container img {
+    width: 150px;
+    border-radius: 50%;
+}
+.user.profile-container .info-container {
+    flex: 2;
+}
+
+.user.profile-container .info-container .fieldset {
+    position: relative;
+    border: 1px solid var(--lable-color);
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+.user.profile-container .info-container .fieldset span {
+    position: absolute;
+    top: -13px;
+    left: 10px;
+    background: #fff;
+    z-index: 10;
+    padding: 0 5px;
+    color: var(--lable-color);
+}
+.user.profile-container .info-container a {
+    color: #fff;
+    background: var(--main-red);
+    padding: 10px 15px 12px;
+    display: inline-block;
+    text-transform: uppercase;
+}
