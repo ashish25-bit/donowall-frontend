@@ -6,8 +6,10 @@ import {
     LOGIN_FAIL,
     USER_LOADED,
     AUTH_ERROR,
-    LOGOUT
+    LOGOUT,
+    UPDATE_PROFILE
 } from './types';
+import url from '../utils/url';
 
 export const loadUser = () => async dispatch => {
     const data = localStorage.getItem('token');
@@ -65,4 +67,20 @@ export const login = (formData, type) => async dispatch => {
 // logout
 export const logout = () => dispatch => {
     dispatch({ type: LOGOUT })
+}
+
+export const updateProfile = (formData, history, type) => async dispatch => {
+    try {
+        const res = await api.put('/user/profile/edit', formData, json);
+        console.log(res);
+
+        const redirectURI = type === "user" ? url.userProfile : url.homeAdmin;
+        history.push(redirectURI);
+        dispatch({ type: UPDATE_PROFILE });
+        dispatch(loadUser());
+    }
+    catch (err) {
+        console.log(err.response.data);
+        return err;
+    }
 }

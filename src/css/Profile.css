@@ -5,21 +5,23 @@
     width: 80%;
     margin: 0 auto;
 }
-.user.profile-container {
+
+.user.profile-container .intro-container {
     display: flex;
+    align-items: center;
     gap: 30px;
+    margin-bottom: 40px;
 }
-.user.profile-container .image-container {
-    flex: 1;
-    text-align: right;
-}
-.user.profile-container .image-container img {
+.user.profile-container .intro-container img {
     width: 150px;
     border-radius: 50%;
 }
-.user.profile-container .info-container {
-    flex: 2;
-}
+
+@media screen and (max-width: 550px) {
+    .user.profile-container .intro-container img {
+        width: 100px;
+    }
+} 
 
 .user.profile-container .info-container .fieldset,
 .user.profile-edit .fieldset {
@@ -84,4 +86,7 @@
     text-transform: uppercase;
     color: #fff;
     outline: none;
+}
+.user.profile-edit button:disabled {
+    opacity: 0.5;
 }

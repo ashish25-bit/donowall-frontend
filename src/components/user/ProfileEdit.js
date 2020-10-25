@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import useTitle from '../../utils/useTitle';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import url from '../../utils/url';
+import { updateProfile } from '../../actions/auth';
 
-const ProfileEdit = ({ user }) => {
+const ProfileEdit = ({ user, updateProfile, history }) => {
     useTitle(`Edit Your Profile`);
 
     const [formData, setFormData] = useState({
@@ -15,11 +16,16 @@ const ProfileEdit = ({ user }) => {
         city: user.city,
         state: user.state,
         blood_group: user.blood_group
-    })
+    });
 
-    const submitHandler = e => {
+    const [loading, setLoading] = useState(false);
+
+    const submitHandler = async e => {
+        setLoading(true);
         e.preventDefault();
-        console.log(formData);
+        const res = await updateProfile(formData, history, "user");
+        if (res !== undefined)
+            setLoading(false);
     }
 
     const changeHandler = e => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -103,18 +109,19 @@ const ProfileEdit = ({ user }) => {
                     />
                 </div>
 
-                <button>Submit</button>
+                <button disabled={loading}>Submit</button>
             </form>
         </div>
     )
 };
 
 PropTypes.ProfileEdit = {
-    user: PropTypes.object.isRequired
-}
+    user: PropTypes.object.isRequired,
+    updateProfile: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
     user: state.auth.user
-})
+});
 
-export default connect(mapStateToProps, {})(ProfileEdit);
+export default connect(mapStateToProps, { updateProfile })(withRouter(ProfileEdit));

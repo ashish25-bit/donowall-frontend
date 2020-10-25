@@ -3,7 +3,8 @@ import {
     LOGIN_FAIL,
     USER_LOADED,
     AUTH_ERROR,
-    LOGOUT
+    LOGOUT,
+    UPDATE_PROFILE
 } from '../actions/types';
 
 const initialState = {
@@ -46,6 +47,12 @@ export default function (state = initialState, action) {
                 token: null,
                 typeToken: null,
                 isAuthenticated: false,
+                loading: true
+            }
+
+        case UPDATE_PROFILE: 
+            return {
+                ...state,
                 loading: true
             }
         

@@ -8,18 +8,17 @@ const Profile = ({ user }) => {
     useTitle(`${user.f_name} ${user.l_name}'s Profile`)
     return (
         <div className='user profile-container'>
-            <div className='image-container'>
+            <div className='intro-container'>
                 <img src={user.image_url} alt="user-avataar" />
-            </div>
-            <div className='info-container'>
-                <h2 
+                <h1
                     style={{ 
                         textTransform: "uppercase",
                         color: "var(--lable-color)",
                         marginBottom: "20px"
                     }}
-                >{user.f_name} {user.l_name}</h2>
-            
+                >{user.f_name} {user.l_name}</h1>
+            </div>
+            <div className='info-container'>
                 <div className='fieldset'>
                     <span>Email</span>
                     <p>{user.email}</p>
