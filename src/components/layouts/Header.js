@@ -53,51 +53,47 @@ const Header = ({
                     </Link>
                 </div>
                 <div className="user-img-container">
-                    {!loading && divisionThird(typeToken, user, logout, isExtrasOpen, toggleState)}
+                    {!loading && divisionThird(typeToken, user, logout, isExtrasOpen, toggleState, setIsSliderOpen)}
                 </div>
             </div>
-            {isSliderOpen && <Slider />}
+            {<Slider isOpen={isSliderOpen} />}
         </Fragment>
     )
 }
 
-function divisionThird(typeToken, user, logout, isExtrasOpen, toggleState) {
-    if (adminTypeToken === typeToken)
-        return (
-            <Fragment>
-                <div style={center}> <small>Welcome Admin</small> </div>
-                <div onClick={toggleState}> 
-                    <img 
-                        width="40px" alt="user-avataar"
-                        src={require('../../assets/user-avataar.png')}
-                    /> 
-                </div>
-                { isExtrasOpen &&
-                <div className='extras'>
-                    <Link to={url.adminProfile} onClick={toggleState}>profile</Link>
-                    <Link 
-                        to={url.authRoute} 
-                        onClick={() =>{ toggleState(); logout(); }}
-                    >logout</Link>
-                </div> }
-            </Fragment>
-        )
+function divisionThird(typeToken, user, logout, isExtrasOpen, toggleState, setIsSliderOpen) {
+    let name;
+    let src;
+    let profileURL;
 
-    if (userTypeToken === typeToken)
-        return (
-            <Fragment>
-                <div style={center}> <small>Welcom {user.f_name}</small> </div>
-                <div onClick={toggleState}> <img width="40px" src={user.image_url} alt="user-avataar" /> </div>
-                { isExtrasOpen &&
+    if (typeToken === adminTypeToken) {
+        name = "Admin";
+        src = require('../../assets/user-avataar.png');
+        profileURL = url.adminProfile; 
+    }
+
+    if (typeToken === userTypeToken) {
+        name = user.f_name;
+        src = user.image_url;
+        profileURL = url.userProfile;
+    }
+
+    return (
+        <Fragment>
+            <div style={center}> <small>Welcome {name}</small> </div>
+            <div onClick={toggleState}> 
+                <img width="40px" alt="user-avataar" src={src} />
+            </div>
+            { isExtrasOpen &&
                 <div className='extras'>
-                    <Link to={url.userProfile} onClick={toggleState}>profile</Link>
+                    <Link to={profileURL} onClick={toggleState}>profile</Link>
                     <Link 
                         to={url.authRoute} 
-                        onClick={() =>{ toggleState(); logout(); }}
+                        onClick={() =>{ toggleState(); logout(); setIsSliderOpen(false); }}
                     >logout</Link>
                 </div> }
-            </Fragment>
-        )
+        </Fragment>
+    )
 }
 
 PropTypes.Header = {

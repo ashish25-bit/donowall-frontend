@@ -1,9 +1,37 @@
-import React from 'react'
+import React from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const Slider = () => {
+const sliderVariant = {
+    initial: {
+        y: '-100vh'
+    },
+    final: {
+        y: 0,
+        transition: {
+            type: 'tween',
+            duration: 0.5,
+            ease: 'easeInOut'
+        }
+    },
+    exit: {
+        y: "-100vh",
+        duration: 2,
+    }
+};
+
+const Slider = ({ isOpen }) => {
     return (
-        <div className='slider'></div>
+        <AnimatePresence>
+            { isOpen && <motion.div 
+                className='slider'
+                variants={sliderVariant}
+                initial="initial"
+                animate="final"
+                exit='exit'
+                ></motion.div>
+            }
+        </AnimatePresence>
     )
 }
 
-export default Slider
+export default Slider;
