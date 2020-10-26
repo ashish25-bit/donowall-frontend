@@ -1,17 +1,29 @@
-/* 
-    USER PROFILE
+/*
+    COMMON
 */
 .profile-container {
     width: 80%;
     margin: 0 auto;
+    margin-bottom: 100px;
 }
 
-.user.profile-container .intro-container {
+.profile-container .intro-container {
     display: flex;
     align-items: center;
     gap: 30px;
     margin-bottom: 40px;
 }
+.profile-container .info-container a {
+    color: #fff;
+    background: var(--main-red);
+    padding: 10px 15px 12px;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+/* 
+    USER PROFILE
+*/
 .user.profile-container .intro-container img {
     width: 150px;
     border-radius: 50%;
@@ -23,19 +35,19 @@
     }
 } 
 
-.user.profile-container .info-container .fieldset,
-.user.profile-edit .fieldset {
+.profile-container .info-container .fieldset,
+.profile-edit .fieldset {
     position: relative;
     border: 1px solid var(--lable-color);
     padding: 10px 15px;
     border-radius: 10px;
     margin-bottom: 25px;
 }
-.user.profile-edit .fieldset {
+.profile-edit .fieldset {
     padding: 0 15px;
 }
-.user.profile-container .info-container .fieldset span,
-.user.profile-edit .fieldset span {
+.profile-container .info-container .fieldset span,
+.profile-edit .fieldset span {
     position: absolute;
     top: -13px;
     left: 10px;
@@ -46,17 +58,7 @@
     z-index: 8;
     user-select: none;
 }
-.user.profile-container .info-container a {
-    color: #fff;
-    background: var(--main-red);
-    padding: 10px 15px 12px;
-    display: inline-block;
-    text-transform: uppercase;
-}
 
-/*
-    USER PROFILE EDIT
-*/
 .profile-edit {
     width: 90%;
     margin: 0 auto;
@@ -64,7 +66,7 @@
 .profile-edit > h2 {
     color: var(--lable-color);
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 .profile-edit > h2 img {
     width: 32px;
@@ -72,13 +74,13 @@
     margin-right: 10px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 }
-.user.profile-edit .fieldset input {
+.profile-edit .fieldset input {
     padding: 15px 0 12px;
     width: 100%;
     border: none;
     outline: none;
 }
-.user.profile-edit button {
+.profile-edit button {
     background: var(--main-red);
     padding: 10px 25px;
     border: none;
@@ -87,6 +89,19 @@
     color: #fff;
     outline: none;
 }
-.user.profile-edit button:disabled {
+.profile-edit button:disabled {
     opacity: 0.5;
+}
+
+/*
+    ADMIN PROFILE CONTAINER
+*/
+.admin .intro-container .img {
+    width: 380px;
+    overflow: hidden;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    background: var(--lable-color);
 }

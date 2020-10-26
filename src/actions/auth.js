@@ -71,10 +71,12 @@ export const logout = () => dispatch => {
 
 export const updateProfile = (formData, history, type) => async dispatch => {
     try {
-        const res = await api.put('/user/profile/edit', formData, json);
+        const endpoint = type === "user" ? '/user/profile/edit' : '/admin/profile/edit';
+        const redirectURI = type === "user" ? url.userProfile : url.adminProfile;
+
+        const res = await api.put(endpoint, formData, json);
         console.log(res);
 
-        const redirectURI = type === "user" ? url.userProfile : url.homeAdmin;
         history.push(redirectURI);
         dispatch({ type: UPDATE_PROFILE });
         dispatch(loadUser());

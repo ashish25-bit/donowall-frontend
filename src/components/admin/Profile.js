@@ -5,47 +5,55 @@ import useTitle from '../../utils/useTitle';
 import { Link } from 'react-router-dom';
 import url from '../../utils/url';
 
-const Profile = ({ user }) => {
-    useTitle(`${user.f_name} ${user.l_name}'s Profile`)
-    return (
-        <div className='user profile-container'>
-            <div className='intro-container'>
-                <img src={user.image_url} alt="user-avataar" />
-                <h1
-                    style={{ 
-                        textTransform: "uppercase",
-                        color: "var(--lable-color)",
-                        marginBottom: "20px"
-                    }}
-                >{user.f_name} {user.l_name}</h1>
-            </div>
-            <div className='info-container'>
-                <div className='fieldset'>
-                    <span>Email</span>
-                    <p>{user.email}</p>
-                </div>
+function Profile({ user }) {
 
+    useTitle(`${user.name}'s Profile`);
+
+    return (
+        <div className='admin profile-container'>
+            <div className='intro-container'>
+                <div className='img'>
+                    <img 
+                        src={`https://api-donowall.herokuapp.com/api/admin/profile/photo?name=${user.image}`}
+                        alt={user.name}
+                    />
+                </div>
+                <h2>{user.name}</h2>
+            </div>
+
+            <div className='info-container'>
+
+                <div className='fieldset'>
+                    <span>Address</span>
+                    <p>{user.address}</p>
+                </div>
+                
                 <div className='fieldset'>
                     <span>City</span>
-                    <p>{user.city}</p>
+                    <p>{user.email}</p>
                 </div>
-
+                
                 <div className='fieldset'>
                     <span>State</span>
                     <p>{user.state}</p>
                 </div>
-
+                
                 <div className='fieldset'>
-                    <span>Blood Group</span>
-                    <p>{user.blood_group}</p>
+                    <span>State</span>
+                    <p>{user.pincode}</p>
+                </div>
+                
+                <div className='fieldset'>
+                    <span>Email</span>
+                    <p>{user.email}</p>
+                </div>
+                
+                <div className='fieldset'>
+                    <span>Contact</span>
+                    <p>{user.contact}</p>
                 </div>
 
-                <div className='fieldset'>
-                    <span>Mobile No.</span>
-                    <p>{user.mobile_no}</p>
-                </div>
-
-                <Link to={url.userProfileEdit}>
+                <Link to={url.adminProfileEdit}>
                     <svg 
                         width="20" height="20" 
                         viewBox="0 0 49 49" 
@@ -70,4 +78,4 @@ const mapStateToProps = state => ({
     user: state.auth.user
 });
 
-export default connect(mapStateToProps)(Profile)
+export default connect(mapStateToProps)(Profile);

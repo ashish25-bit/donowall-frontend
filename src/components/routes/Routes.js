@@ -10,6 +10,8 @@ import AdminPrivateRoute from './AdminPrivateRoute';
 import UserPrivateRoute from './UserPrivateRoute';
 import UserProfile from '../user/Profile';
 import UserProfileEdit from '../user/ProfileEdit';
+import AdminProfile from '../admin/Profile';
+import AdminProfileEdit from '../admin/ProfileEdit';
 import NotFound from '../layouts/NotFound';
 import url from '../../utils/url';
 
@@ -23,6 +25,8 @@ const Routes = () => {
                 <UserPrivateRoute exact path={url.homeUser} component={UserHome} />
                 <UserPrivateRoute exact path={url.userProfile} component={UserProfile} />
                 <UserPrivateRoute exact path={url.userProfileEdit} component={UserProfileEdit} />
+                <AdminPrivateRoute exact path={url.adminProfile} component={AdminProfile} />
+                <AdminPrivateRoute exact path={url.adminProfileEdit} component={AdminProfileEdit} />
                 <Route path='*' component={NotFound} />
             </Switch>
         </div>

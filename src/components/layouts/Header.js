@@ -74,6 +74,7 @@ function divisionThird(typeToken, user, logout, isExtrasOpen, toggleState) {
                 </div>
                 { isExtrasOpen &&
                 <div className='extras'>
+                    <Link to={url.adminProfile} onClick={toggleState}>profile</Link>
                     <Link 
                         to={url.authRoute} 
                         onClick={() =>{ toggleState(); logout(); }}
