@@ -26,19 +26,6 @@ const Signup = ({ onClose }) => {
                 <form>
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
-						<span>
-							<svg 
-								style={{ marginTop: "5px" }}
-								width="1.5em" 
-								height="1.5em" 
-								viewBox="0 0 16 16" 
-								className="bi bi-envelope" 
-								fill="var(--form-icon)" 
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path fillRule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
-							</svg>
-						</span>
 						<input 
 							type="text" 
 							className="form-control"
@@ -98,6 +85,51 @@ const Signup = ({ onClose }) => {
 							required
 						/>
 					</div>
+					<div className="form-group">
+                        <label htmlFor="contact">Contact</label>
+						<input 
+							type="text" 
+							className="form-control"
+							name="contact"
+							required
+						/>
+                    </div>
+					<div className="form-group">
+                        <label htmlFor="city">City</label>
+						<input 
+							type="text" 
+							className="form-control"
+							name="city"
+							required
+						/>
+                    </div>
+					<div className="form-group">
+                        <label htmlFor="state">State</label>
+						<input 
+							type="text" 
+							className="form-control"
+							name="state"
+							required
+						/>
+                    </div>
+					<div className="form-group">
+                        <label htmlFor="address">Address</label>
+						<input 
+							type="text" 
+							className="form-control"
+							name="address"
+							required
+						/>
+                    </div>
+					<div className="form-group">
+                        <label htmlFor="pincode">Pincode</label>
+						<input 
+							type="text" 
+							className="form-control"
+							name="pincode"
+							required
+						/>
+                    </div>
 
                     <div className="d-flex justify-content-center">
 						<button className='btn login-btn'>Login</button>

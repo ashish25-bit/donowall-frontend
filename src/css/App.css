@@ -164,7 +164,12 @@ p {
 	padding: 30px;
 	border-radius: 10px;
 	width: 600px;
+	max-height: 80%;
+	overflow: auto;
 }
+.login-form::-webkit-scrollbar {
+	width: 0px;
+  }
 
 @media screen and (max-width: 661px) {
 	.login-form {
