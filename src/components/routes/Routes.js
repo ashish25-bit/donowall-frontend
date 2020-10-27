@@ -12,6 +12,8 @@ import UserProfile from '../user/Profile';
 import UserProfileEdit from '../user/ProfileEdit';
 import AdminProfile from '../admin/Profile';
 import AdminProfileEdit from '../admin/ProfileEdit';
+import EditBloodData from '../admin/EditBloodData';
+import EditImage from '../admin/EditImage';
 import NotFound from '../layouts/NotFound';
 import url from '../../utils/url';
 
@@ -27,6 +29,8 @@ const Routes = () => {
                 <UserPrivateRoute exact path={url.userProfileEdit} component={UserProfileEdit} />
                 <AdminPrivateRoute exact path={url.adminProfile} component={AdminProfile} />
                 <AdminPrivateRoute exact path={url.adminProfileEdit} component={AdminProfileEdit} />
+                <AdminPrivateRoute exact path={url.editBloodData} component={EditBloodData} />
+                <AdminPrivateRoute exact path={url.editImage} component={EditImage} />
                 <Route path='*' component={NotFound} />
             </Switch>
         </div>
