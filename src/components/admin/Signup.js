@@ -1,7 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDom from 'react-dom';
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
+import { signup } from '../../actions/auth';
 
-const Signup = ({ onClose }) => {
+const Signup = ({ onClose, signup }) => {
+
+	const [formData, setFormData] = useState({
+		name: "SGPGI",
+		email: "ashishyoel23@gmail.com",
+		city: "Lucknow",
+		state: "Uttar Pradesh",
+		address: "NH 20, Rai Bareli Road, LKO",
+		contact: 123456789,
+		password: "123456",
+		pincode: 226014
+	});
+
+	const [loading, setLoading] = useState(false);
+
+	const changeHandler = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+	const submitForm = async e => {
+		e.preventDefault();
+		setLoading(true);
+		signup(formData, 'admin');
+	}
+
+	const {
+		name,
+		email,
+		city,
+		state,
+		address,
+		contact,
+		password,
+		pincode
+	} = formData;
+
     return ReactDom.createPortal(
         <div className="overlay">
 
@@ -23,13 +59,15 @@ const Signup = ({ onClose }) => {
                 
                 <h4>Signup Admin</h4>
 
-                <form>
+                <form onSubmit={submitForm}>
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
 						<input 
 							type="text" 
 							className="form-control"
 							name="name"
+							value={name}
+							onChange={e => changeHandler(e)}
 							required
 						/>
                     </div>
@@ -54,6 +92,8 @@ const Signup = ({ onClose }) => {
 							className="form-control"
 							aria-describedby="emailHelp"
 							name="email"
+							value={email}
+							onChange={e => changeHandler(e)}
 							required
 						/>
 		
@@ -82,15 +122,19 @@ const Signup = ({ onClose }) => {
 							type="password" 
 							className="form-control" 
 							name="password"
+							value={password}
+							onChange={e => changeHandler(e)}
 							required
 						/>
 					</div>
 					<div className="form-group">
                         <label htmlFor="contact">Contact</label>
 						<input 
-							type="text" 
+							type="number" 
 							className="form-control"
 							name="contact"
+							value={contact}
+							onChange={e => changeHandler(e)}
 							required
 						/>
                     </div>
@@ -100,6 +144,8 @@ const Signup = ({ onClose }) => {
 							type="text" 
 							className="form-control"
 							name="city"
+							value={city}
+							onChange={e => changeHandler(e)}
 							required
 						/>
                     </div>
@@ -109,6 +155,8 @@ const Signup = ({ onClose }) => {
 							type="text" 
 							className="form-control"
 							name="state"
+							value={state}
+							onChange={e => changeHandler(e)}
 							required
 						/>
                     </div>
@@ -118,22 +166,30 @@ const Signup = ({ onClose }) => {
 							type="text" 
 							className="form-control"
 							name="address"
+							value={address}
+							onChange={e => changeHandler(e)}
 							required
 						/>
                     </div>
 					<div className="form-group">
                         <label htmlFor="pincode">Pincode</label>
 						<input 
-							type="text" 
+							type="number" 
 							className="form-control"
 							name="pincode"
+							value={pincode}
+							onChange={e => changeHandler(e)}
 							required
 						/>
                     </div>
-
-
+					
 					<div className="d-flex justify-content-center">
-						<button className='btn login-btn'>Register</button>
+						<button 
+							className='btn login-btn'
+							disabled={loading}
+						>{
+							loading ? 'signing up...' : 'signup'
+						}</button>
 					</div>
                 </form>
             </div>
@@ -143,4 +199,9 @@ const Signup = ({ onClose }) => {
     )
 }
 
-export default Signup;
+Signup.propTypes = {
+	signup: PropTypes.func.isRequired,
+	onClose: PropTypes.func,
+}
+
+export default connect(null, { signup })(Signup);

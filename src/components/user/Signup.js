@@ -1,6 +1,41 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDom from 'react-dom';
-const Signup = ({ onClose }) => {
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
+import { signup } from '../../actions/auth';
+const Signup = ({ onClose,signup }) => {
+    const [formData, setFormData] = useState({
+        f_name: "Ashish",
+        l_name:"yoel",
+		email: "ashishyoel123@gmail.com",
+		city: "Lucknow",
+		state: "Uttar Pradesh",
+		mobile_no: 123456789,
+        password: "1234567",
+        blood_group:"B+"
+	});
+
+	const [loading, setLoading] = useState(false);
+
+	const changeHandler = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+	const submitForm = async e => {
+		e.preventDefault();
+		setLoading(true);
+		signup(formData, 'user');
+	}
+
+	const {
+        f_name,
+        l_name,
+		email,
+		city,
+        state,
+        mobile_no,
+		password,
+		blood_group
+	} = formData;
+
     return ReactDom.createPortal(
         <div className="overlay">
 
@@ -20,15 +55,17 @@ const Signup = ({ onClose }) => {
 				
                 </div>
                 
-                <h4>Signup Admin</h4>
+                <h4>Signup User</h4>
 
-                <form>
+                <form onSubmit={submitForm}>
                     <div className="form-group">
                         <label htmlFor="f_name">First Name</label>
 						<input 
 							type="text" 
 							className="form-control"
-							name="f_name"
+                            name="f_name"
+                            value={f_name}
+                            onChange={(e)=>changeHandler(e)}
 							required
 						/>
                     </div>
@@ -37,7 +74,9 @@ const Signup = ({ onClose }) => {
 						<input 
 							type="text" 
 							className="form-control"
-							name="l_name"
+                            name="l_name"
+                            value={l_name}
+                            onChange={e => changeHandler(e)}
 							required
 						/>
                     </div>
@@ -61,7 +100,9 @@ const Signup = ({ onClose }) => {
 							type="email" 
 							className="form-control"
 							aria-describedby="emailHelp"
-							name="email"
+                            name="email"
+                            value={email}
+                            onChange={e => changeHandler(e)}
 							required
 						/>
 		
@@ -89,7 +130,9 @@ const Signup = ({ onClose }) => {
 						<input 
 							type="password" 
 							className="form-control" 
-							name="password"
+                            name="password"
+                            value={password}
+                            onChange={e => changeHandler(e)}
 							required
 						/>
 					</div>
@@ -98,8 +141,10 @@ const Signup = ({ onClose }) => {
 						<input 
 							type="text" 
 							className="form-control"
-							name="mobile_no"
-							required
+                            name="mobile_no"
+                            value={mobile_no}
+                            onChange={e => changeHandler(e)}
+                            required
 						/>
                     </div>
 					<div className="form-group">
@@ -107,7 +152,9 @@ const Signup = ({ onClose }) => {
 						<input 
 							type="text" 
 							className="form-control"
-							name="city"
+                            name="city"
+                            value={city}
+                            onChange={e => changeHandler(e)}
 							required
 						/>
                     </div>
@@ -116,7 +163,9 @@ const Signup = ({ onClose }) => {
 						<input 
 							type="text" 
 							className="form-control"
-							name="state"
+                            name="state"
+                            value={state}
+                            onChange={e => changeHandler(e)}
 							required
 						/>
                     </div>
@@ -125,14 +174,17 @@ const Signup = ({ onClose }) => {
 						<input 
 							type="text" 
 							className="form-control"
-							name="blood_group"
+                            name="blood_group"
+                            value={blood_group}
+                            onChange={e => changeHandler(e)}
 							required
 						/>
                     </div>
 
                     
 					<div className="d-flex justify-content-center">
-						<button className='btn login-btn'>Register</button>
+						<button className='btn login-btn' disabled={loading} 
+                        >{loading ? 'signing up...' : 'signup'}</button>
 					</div>
                 </form>
             </div>
@@ -142,4 +194,9 @@ const Signup = ({ onClose }) => {
     )
 }
 
-export default Signup;
+Signup.propTypes = {
+	signup: PropTypes.func.isRequired,
+	onClose: PropTypes.func,
+}
+
+export default connect(null, { signup })(Signup);

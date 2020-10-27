@@ -5,10 +5,12 @@ import { Route, Redirect } from 'react-router-dom';
 import { adminTypeToken } from '../../utils/getUserType';
 import NotFound from '../layouts/NotFound';
 import Spinner from '../layouts/Spinner';
+import EditBloodData from '../admin/EditBloodData';
+import EditImage from '../admin/EditImage';
 
 const AdminPrivateRoute = ({
     component: Component, 
-    auth: { isAuthenticated, loading, typeToken },
+    auth: { isAuthenticated, loading, typeToken, user },
     ...rest
 }) => {
     const status = loading || typeToken === adminTypeToken ? true : false;
@@ -23,9 +25,21 @@ const AdminPrivateRoute = ({
                 loading && localStorage.getItem('token') !== null ? (
                     <Spinner />
                 ) : isAuthenticated ? (
-                    <div className='main-container'>
-                        <Component {...props} />
-                    </div>
+                    user.blood_data.length === 0 || user.image === null ? (
+                        user.image === null ? (
+                            <div className='main-container'>
+                                <EditImage />
+                            </div>
+                        ) : (
+                            <div className='main-container'>
+                                <EditBloodData />
+                            </div>
+                        )
+                    ) : (
+                        <div className='main-container'>
+                            <Component {...props} />
+                        </div>
+                    )
                 ) : (
                     <Redirect to='/' />
                 )

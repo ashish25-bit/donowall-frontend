@@ -1,5 +1,5 @@
 import api from '../utils/api';
-import { json } from '../utils/headers';
+import { json, multipart } from '../utils/headers';
 import { getUserType, adminTypeToken } from '../utils/getUserType';
 import { 
     LOGIN_SUCCESS, 
@@ -7,7 +7,9 @@ import {
     USER_LOADED,
     AUTH_ERROR,
     LOGOUT,
-    UPDATE_PROFILE
+    UPDATE_PROFILE,
+    REGISTER_SUCCESS,
+    REGISTER_FAIL
 } from './types';
 import url from '../utils/url';
 
@@ -59,8 +61,38 @@ export const login = (formData, type) => async dispatch => {
         dispatch(loadUser());
     }
     catch (err) {
-        console.log(err);
+        if (err.response.data !== undefined)
+            console.log(err.response.data);
+        else 
+            console.log(err.message);
         dispatch({ type: LOGIN_FAIL });
+    }
+}
+
+// signup user or admin
+export const signup = (formData, type) => async dispatch => {
+    const endpoint = type === 'admin' ? '/admin/users' : '/user/users';
+    const body = JSON.stringify(formData);
+
+    try {
+        const res = await api.post(endpoint, body, json);
+        console.log(res.data);
+
+        const { typeToken } = await getUserType(res.data.token);
+
+        dispatch({
+            type: REGISTER_SUCCESS,
+            payload: { ...res.data, typeToken }
+        });
+        
+        dispatch(loadUser());
+    }
+    catch (err) {
+        if (err.response.data !== undefined)
+            console.log(err.response.data);
+        else 
+            console.log(err.message);
+        dispatch({ type: REGISTER_FAIL });
     }
 }
 
@@ -82,7 +114,43 @@ export const updateProfile = (formData, history, type) => async dispatch => {
         dispatch(loadUser());
     }
     catch (err) {
-        console.log(err.response.data);
+        if (err.response.data !== undefined)
+            console.log(err.response.data);
+        else 
+            console.log(err.message);
         return err;
+    }
+}
+
+// add/replace admin profile image
+export const changeImage = formData => async dispatch => {
+    try {
+        const res = await api.post('/admin/profile/photo', formData, multipart);
+        console.log(res.data);
+        
+        dispatch({ type: UPDATE_PROFILE });
+        dispatch(loadUser());
+    }
+    catch (err) {
+        if (err.response.data !== undefined)
+            console.log(err.response.data);
+        else 
+            console.log(err.message);
+    }
+};
+
+export const changeBloodData = data => async dispatch => {
+    try {
+        const res = await api.put('/admin/profile/editblood', {data: data}, json);
+        console.log(res.data);
+
+        dispatch({ type: UPDATE_PROFILE });
+        dispatch(loadUser());
+    }
+    catch (err) {
+        if (err.response.data !== undefined)
+            console.log(err.response.data);
+        else 
+            console.log(err.message);
     }
 }
