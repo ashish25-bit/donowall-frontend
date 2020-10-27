@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-
 const Signup = ({ onClose }) => {
     return ReactDom.createPortal(
         <div className="overlay">
@@ -25,11 +24,20 @@ const Signup = ({ onClose }) => {
 
                 <form>
                     <div className="form-group">
-                        <label htmlFor="name">Name</label>
+                        <label htmlFor="f_name">First Name</label>
 						<input 
 							type="text" 
 							className="form-control"
-							name="name"
+							name="f_name"
+							required
+						/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="l_name">Last Name</label>
+						<input 
+							type="text" 
+							className="form-control"
+							name="l_name"
 							required
 						/>
                     </div>
@@ -86,11 +94,11 @@ const Signup = ({ onClose }) => {
 						/>
 					</div>
 					<div className="form-group">
-                        <label htmlFor="contact">Contact</label>
+                        <label htmlFor="contact">Mobile Number</label>
 						<input 
 							type="text" 
 							className="form-control"
-							name="contact"
+							name="mobile_no"
 							required
 						/>
                     </div>
@@ -113,25 +121,16 @@ const Signup = ({ onClose }) => {
 						/>
                     </div>
 					<div className="form-group">
-                        <label htmlFor="address">Address</label>
+                        <label htmlFor="blood_group">Blood Group</label>
 						<input 
 							type="text" 
 							className="form-control"
-							name="address"
-							required
-						/>
-                    </div>
-					<div className="form-group">
-                        <label htmlFor="pincode">Pincode</label>
-						<input 
-							type="text" 
-							className="form-control"
-							name="pincode"
+							name="blood_group"
 							required
 						/>
                     </div>
 
-
+                    
 					<div className="d-flex justify-content-center">
 						<button className='btn login-btn'>Register</button>
 					</div>
