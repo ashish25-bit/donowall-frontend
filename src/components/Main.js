@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import LoginUser from './user/Login';
 import LoginAdmin from './admin/Login';
 import AdminSignup from './admin/Signup';
+import UserSignup from './user/Signup';
 import useTitle from '../utils/useTitle';
 // import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
@@ -23,10 +24,11 @@ const Main = ({ isAuthenticated, typeToken }) => {
         <div className='home-btn-container'>
             <button onClick={()=>setCurrentForm(1)}>Login User</button>
             <button onClick={()=>setCurrentForm(2)}>Login Admin</button>
-            <button>Signup User</button>
+            <button onClick={()=>setCurrentForm(3)}>Signup User</button>
             <button onClick={()=>setCurrentForm(4)}>Signup Admin</button>
             { currentForm === 1 && <LoginUser onClose={()=> setCurrentForm(-1)} /> }
             { currentForm === 2 && <LoginAdmin onClose={()=> setCurrentForm(-1)} /> }
+            { currentForm === 3 && <UserSignup onClose={()=> setCurrentForm(-1)}/>}
             { currentForm === 4 && <AdminSignup onClose={() => setCurrentForm(-1)} /> }
         </div>
     )
