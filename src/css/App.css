@@ -44,6 +44,10 @@ button {
 p {
 	margin-bottom: 0;
 }
+button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
 
 /* 
 	header 
@@ -257,4 +261,33 @@ p {
 */
 .main-container {
     margin-top: 100px;
+}
+
+/*
+	FIELDSET STYLING
+*/
+.profile-container .info-container .fieldset,
+.profile-edit .fieldset,
+.edit-blood-container .fieldset {
+    position: relative;
+    border: 1px solid var(--lable-color);
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+.profile-container .info-container .fieldset span,
+.profile-edit .fieldset span,
+.edit-blood-container .fieldset span {
+    position: absolute;
+    top: -13px;
+    left: 10px;
+    background: #fff;
+    z-index: 10;
+    padding: 0 5px;
+    color: var(--lable-color);
+    z-index: 8;
+    user-select: none;
+}
+.edit-blood-container .fieldset input {
+	border: none;
 }

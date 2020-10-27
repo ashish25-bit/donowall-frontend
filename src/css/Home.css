@@ -65,3 +65,33 @@
         grid-template-columns: 1fr;
     }
 }
+
+/*
+    HOME ADMIN
+*/
+.admin .edit-data-link {
+    color: #fff;
+    background: var(--main-red);
+    padding: 10px 15px 12px;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+/*
+    ADMIN EDIT BLOOD CONTAINER
+*/
+.edit-blood-container .input-fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-gap: 15px 30px;
+}
+.edit-blood-container .input-fields button {
+    background: var(--main-red);
+    text-transform: uppercase;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    display: block;
+    height: 45px;
+}

@@ -35,30 +35,9 @@
     }
 } 
 
-.profile-container .info-container .fieldset,
-.profile-edit .fieldset {
-    position: relative;
-    border: 1px solid var(--lable-color);
-    padding: 10px 15px;
-    border-radius: 10px;
-    margin-bottom: 25px;
-}
 .profile-edit .fieldset {
     padding: 0 15px;
 }
-.profile-container .info-container .fieldset span,
-.profile-edit .fieldset span {
-    position: absolute;
-    top: -13px;
-    left: 10px;
-    background: #fff;
-    z-index: 10;
-    padding: 0 5px;
-    color: var(--lable-color);
-    z-index: 8;
-    user-select: none;
-}
-
 .profile-edit {
     width: 90%;
     margin: 0 auto;
@@ -88,9 +67,6 @@
     text-transform: uppercase;
     color: #fff;
     outline: none;
-}
-.profile-edit button:disabled {
-    opacity: 0.5;
 }
 
 /*
