@@ -291,3 +291,16 @@ button:disabled {
 .edit-blood-container .fieldset input {
 	border: none;
 }
+
+/*
+SHOW HOSPITAL CONTAINER
+*/
+.show-container{
+	width: 80%;
+	justify-self: center;
+}
+.show-container img{
+	width: 100%;
+	height: 40vh;
+	border-radius: 20px;
+}
