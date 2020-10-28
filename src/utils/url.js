@@ -8,5 +8,7 @@ export default {
     
     homeUser: '/user/home',
     userProfile: '/user/profile',
-    userProfileEdit: '/user/profile/edit'
+    userProfileEdit: '/user/profile/edit',
+
+    baseImageUrl: "https://api-donowall.herokuapp.com/api/admin/profile/photo"
 }

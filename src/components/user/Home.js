@@ -1,28 +1,53 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // import { Link } from 'react-router-dom';
 import useTitle from '../../utils/useTitle';
+import api from '../../utils/api';
+import url from '../../utils/url';
 
 function Home() {
     useTitle('Welcome to Donowall');
 
-    const src = "https://api-donowall.herokuapp.com/api/admin/profile/photo?name=95dd295b5573e91932eac055ba543bac.jpg";
-    const name = "Some Hospital Name";
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function getAllHospitals() {
+            try {
+                const res = await api.get('/user/hospital/all/hospitals');
+                console.log(res.data);
+                setData(res.data.hospitals);
+                setLoading(false);
+            }
+            catch (err) {
+                console.log(err.message);
+            }
+        }
+
+        getAllHospitals();
+    }, []);
     
     return (
         <div className='user home-container'>
             
             <div className='list-container'>
                 {
-                    [...Array(10).keys()].map(i => (
-                        <div className='list' key={i}>
-                            <div className='image-con'>
-                                <img src={src} alt={name} />
+                    loading ? (
+                        <h1>Loading...</h1>
+                    ) : (
+                        data.map(({ name, image }, index) => (
+                            <div className='list' key={index}>
+                                <div className='image-con'>
+                                    <img 
+                                        src={`${url.baseImageUrl}?name=${image}`} 
+                                        alt={name} 
+                                    />
+                                </div>
+                                <div className='info-con'>
+                                    <p>{name}</p>
+                                </div>
                             </div>
-                            <div className="info-con">
-                                <p>{name}</p>
-                            </div>
-                        </div>
-                    ))
+                        ))
+                    )
                 }
             </div>
 
