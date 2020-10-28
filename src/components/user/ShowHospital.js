@@ -9,7 +9,6 @@ import userEvent from '@testing-library/user-event';
 import Hospital from '../../'
 
 const ShowHospital=({match})=>{
-    const hospital=
     return(
     <>
     <div className="profile-container d-flex justify-content-center">
