@@ -2,6 +2,7 @@ import React ,{useState,useEffect} from 'react';
 import Chart from '../admin/Chart'
 import userEvent from '@testing-library/user-event';
 import api from '../../utils/api'
+import url from '../../utils/url'
 
 
 const ShowHospital=({match})=>{
@@ -26,7 +27,10 @@ const ShowHospital=({match})=>{
     <>
     <div className="profile-container d-flex justify-content-center">
         <div className="show-container ">
-            <img src="https://www.bahrainspecialisthospital.com/images/about.png" alt=""/>
+        <img 
+            src={`${url.baseImageUrl}?name=${data.image}`} 
+            alt={data.name} 
+        />
             <div className="d-flex justify-content-center hospital-name"><h3> {data.name}</h3></div>
             <div className="graph-container">
             {loading ?
