@@ -154,3 +154,29 @@ export const changeBloodData = data => async dispatch => {
             console.log(err.message);
     }
 }
+
+export const changeAcceptingStatus = () => async dispatch => {
+    try {
+        await api.put('/admin/profile/change/accepting/status');
+        dispatch(loadUser());
+
+        const present = await api.get('/admin/slot');
+
+        if (present.data)
+            return present.data
+        
+        // if data is not already present add the dummy data
+        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thurday", "Friday", "Saturday"];
+        const body = days.map(day => { return { day, time: [["12PM", "2PM"]] } });
+
+        const res = await api.post('/admin/slot/update', JSON.stringify(body), json);
+
+        return res.data;
+    }
+    catch (err) {
+        if (err.response.data !== undefined)
+            console.log(err.response.data);
+        console.log(err.message);
+        return 500;
+    }
+}

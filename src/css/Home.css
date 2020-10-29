@@ -69,6 +69,46 @@
 /*
     HOME ADMIN
 */
+.admin.home-container > .intro-container {
+    display: flex;
+    gap: 40px;
+    margin: 20px 0 50px;
+}
+
+@media screen and (max-width: 769px) {
+    .admin.home-container > .intro-container {
+        flex-direction: column;
+    }
+}
+
+.admin.home-container .status,
+.admin.home-container .appointments {
+    flex: 1;
+}
+.admin.home-container .status .true,
+.admin.home-container .status .false {
+    padding: 10px 20px;
+    color: #fff;
+    text-transform: uppercase;
+}
+.admin.home-container .status .true,
+.admin.home-container .status button.true {
+    background: #347734;
+}
+.admin.home-container .status .false,
+.admin.home-container .status button.false {
+    background: var(--main-red);
+}
+
+.admin.home-container .status button {
+    border: none;
+    color: #fff;
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    outline: none;
+}
+
 .admin .edit-data-link {
     color: #fff;
     background: var(--main-red);
