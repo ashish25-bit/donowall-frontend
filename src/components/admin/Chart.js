@@ -29,7 +29,9 @@ const Chart = ({ data }) => {
                     scales: {
                         yAxes: [{
                             ticks: {
-                                beginAtZero: true
+                                
+                                suggestedMin:0,
+                                suggestedMax:100
                             }
                         }]
                     }
