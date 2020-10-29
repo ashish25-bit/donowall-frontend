@@ -135,3 +135,36 @@
     display: block;
     height: 45px;
 }
+
+.admin.home-container .slots-container {
+    max-height: 150px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.admin.home-container .slots-container div {
+    margin: 10px 0;
+}
+.admin.home-container .slots-container span {
+    padding: 5px 10px;
+    background: var(--lable-color);
+    color: #fff;
+    margin-right: 5px;
+}
+
+/*
+    SLOTS PAGE ADMIN
+*/
+.slots-page .weekday {
+    margin-bottom: 20px;
+    background: #f2f2f2;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+.slots-page .weekday section {
+    display: inline-block;
+    margin-right: 5px;
+    background: var(--main-red);
+    padding: 5px;
+    color: #fff;
+    margin-top: 10px;
+}

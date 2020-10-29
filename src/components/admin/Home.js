@@ -18,8 +18,8 @@ const Home = ({ user, changeAcceptingStatus }) => {
         async function getAppointments() {
             try {
                 const res = await api.get('/admin/slot');
-                console.log(res.data);
-                setSlots(res.data.slots);
+                if (res.data)
+                    setSlots(res.data.slots);
             }
             catch (err) {
                 console.log(err);
@@ -33,7 +33,7 @@ const Home = ({ user, changeAcceptingStatus }) => {
     const changeStatus = async () => {
         setLoading(true);
         const res = await changeAcceptingStatus();
-        setSlots(res);
+        setSlots(res.slots);
         setLoading(false);
     }
     
@@ -59,12 +59,21 @@ const Home = ({ user, changeAcceptingStatus }) => {
                     {
                         !loading ? (
                             slots && (
-                                <div>Slots are Present</div>
+                                <div className='slots-container'>{
+                                    slots.map(({ day, time }, index) => (
+                                        <div key={index}>
+                                            <h5>{day}</h5>
+                                            {time.map(([start, end], i) => <span key={i}>{start} - {end}</span>)}
+                                        </div>
+                                    ))
+                                }</div>
                             )
                         ) : (
                             <div>Loading...</div>
                         )
                     }
+
+                    <Link to={url.changeTimeSlot}>Change Time Slots &gt;&gt; </Link>
 
                 </div>
                 <div className='appointments'>

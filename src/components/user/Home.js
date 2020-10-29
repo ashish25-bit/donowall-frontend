@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import useTitle from '../../utils/useTitle';
 import api from '../../utils/api';
 import url from '../../utils/url';
@@ -34,7 +34,7 @@ function Home() {
                     loading ? (
                         <h1>Loading...</h1>
                     ) : (
-                        data.map(({ name, image }, index) => (
+                        data.map(({ name, image, _id }, index) => (
                             <div className='list' key={index}>
                                 <div className='image-con'>
                                     <img 
@@ -44,6 +44,7 @@ function Home() {
                                 </div>
                                 <div className='info-con'>
                                     <p>{name}</p>
+                                    <Link to={`${url.showHospital}/${_id}`}>Visit &gt;&gt;</Link>
                                 </div>
                             </div>
                         ))
