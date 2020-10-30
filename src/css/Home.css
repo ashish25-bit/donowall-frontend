@@ -135,3 +135,57 @@
     display: block;
     height: 45px;
 }
+
+.admin.home-container .slots-container {
+    max-height: 150px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.admin.home-container .slots-container div {
+    margin: 10px 0;
+}
+.admin.home-container .slots-container span {
+    padding: 5px 10px;
+    background: var(--lable-color);
+    color: #fff;
+    margin-right: 5px;
+}
+
+/*
+    SLOTS PAGE ADMIN
+*/
+.slots-page .weekday,
+.book-appointments .weekday {
+    margin-bottom: 20px;
+    background: #f2f2f2;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+.slots-page .weekday section,
+.book-appointments .weekday section {
+    display: inline-block;
+    margin-right: 5px;
+    background: var(--main-red);
+    padding: 5px;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.slots-page .weekday > div button {
+    padding: 4px 10px;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    margin-left: 15px;
+    background: var(--main-red);
+    font-weight: bolder;
+}
+.slots-page .update-slots-btn {
+    width: 100%;
+    border: none;
+    background: var(--main-red);
+    color: #fff;
+    text-transform: uppercase;
+    padding: 15px 0;
+    font-weight: bolder;
+}

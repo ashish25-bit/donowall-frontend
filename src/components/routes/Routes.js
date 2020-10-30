@@ -15,7 +15,9 @@ import AdminProfileEdit from '../admin/ProfileEdit';
 import EditBloodData from '../admin/EditBloodData';
 import EditImage from '../admin/EditImage';
 import NotFound from '../layouts/NotFound';
-import ShowHospital from '../user/ShowHospital'
+import ShowHospital from '../user/ShowHospital';
+import ChangeTimeSlots from '../admin/ChangeTimeSlots';
+import BookAppointment from '../user/BookAppointment';
 import url from '../../utils/url';
 
 const Routes = () => {
@@ -28,10 +30,12 @@ const Routes = () => {
                 <UserPrivateRoute exact path={url.homeUser} component={UserHome} />
                 <UserPrivateRoute exact path={url.userProfile} component={UserProfile} />
                 <UserPrivateRoute exact path={url.userProfileEdit} component={UserProfileEdit} />
-                <PrivateRouteC exact path={url.showHospital} component={ShowHospital}/>
+                <UserPrivateRoute exact path={`${url.showHospital}/:id`} component={ShowHospital}/>
+                <UserPrivateRoute exact path={`${url.bookAppointment}/:id`} component={BookAppointment} />
                 <AdminPrivateRoute exact path={url.adminProfile} component={AdminProfile} />
                 <AdminPrivateRoute exact path={url.adminProfileEdit} component={AdminProfileEdit} />
                 <AdminPrivateRoute exact path={url.editBloodData} component={EditBloodData} />
+                <AdminPrivateRoute exact path={url.changeTimeSlot} component={ChangeTimeSlots} />
                 <AdminPrivateRoute exact path={url.editImage} component={EditImage} />
                 <Route path='*' component={NotFound} />
             </Switch>

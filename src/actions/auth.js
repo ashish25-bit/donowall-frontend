@@ -166,7 +166,7 @@ export const changeAcceptingStatus = () => async dispatch => {
             return present.data
         
         // if data is not already present add the dummy data
-        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thurday", "Friday", "Saturday"];
+        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         const body = days.map(day => { return { day, time: [["12PM", "2PM"]] } });
 
         const res = await api.post('/admin/slot/update', JSON.stringify(body), json);
