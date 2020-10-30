@@ -168,3 +168,22 @@
     color: #fff;
     margin-top: 10px;
 }
+
+.slots-page .weekday > div button {
+    padding: 4px 10px;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    margin-left: 15px;
+    background: var(--main-red);
+    font-weight: bolder;
+}
+.slots-page .update-slots-btn {
+    width: 100%;
+    border: none;
+    background: var(--main-red);
+    color: #fff;
+    text-transform: uppercase;
+    padding: 15px 0;
+    font-weight: bolder;
+}

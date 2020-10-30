@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, Fragment } from 'react';
 import api from '../../utils/api';
+import { json } from '../../utils/headers';
 
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -15,8 +16,8 @@ const ChangeTimeSlots = () => {
     );
 
     function setStateFun(res) {
-        if (res.data) {
-            const data = res.data.slots;
+        if (res) {
+            const data = res.slots;
             let slotIndex = 0;
             let endRes = [];
 
@@ -39,7 +40,7 @@ const ChangeTimeSlots = () => {
         async function getTimeSlots() {
             try {
                 const res = await api.get('/admin/slot');
-                setStateFun(res);
+                setStateFun(res.data);
             } 
             catch (err) {
                 if (err.response !== undefined)
@@ -55,11 +56,11 @@ const ChangeTimeSlots = () => {
     const addData = index => {
         try {
             const children =  elemRef.current[index].current.childNodes;
-            if (!children[1].value && !children[4].value)
+            if (!children[0].value && !children[4].value)
                 alert('Enter both fields')
             else {
-                const start = children[1].value + children[2].value;
-                const end = children[4].value + children[5].value;
+                const start = children[0].value + children[1].value;
+                const end = children[3].value + children[4].value;
 
                 const temp = slots.map((slot, i) => {
                     if (index !== i)
@@ -69,8 +70,8 @@ const ChangeTimeSlots = () => {
 
                 setSlots(temp);
 
-                children[1].value = "";
-                children[4].value = "";
+                children[0].value = "";
+                children[3].value = "";
             }
         }
         catch (err) {
@@ -78,12 +79,21 @@ const ChangeTimeSlots = () => {
         }
     }
 
-    const submitData = () => {
+    const submitData = async () => {
         setIsSubmitting(true);
-        const formData = slots.filter(slot => { 
-            return slot.time.length ? slot : null
-        });
-        console.log(formData);
+
+        try {
+            const formData = slots.filter(slot => { 
+                return slot.time.length ? slot : null
+            });
+            console.log(formData);
+            
+            const res =  await api.post('/admin/slot/update', formData, json);
+            console.log(res.data);
+        }
+        catch (err) {
+            console.log(err.message);
+        }
         setIsSubmitting(false);
     }
 
@@ -101,7 +111,23 @@ const ChangeTimeSlots = () => {
 
                                     <div ref={elemRef.current[index]}>
 
-                                        <label>Start</label>
+                                        {/* start time */}
+                                        <select>{
+                                            [...Array(12).keys()].map(index =>
+                                                <option 
+                                                    key={index} 
+                                                    value={index+1}
+                                                >{index+1}</option>
+                                            )
+                                        }</select>
+                                        <select>
+                                            <option>AM</option>
+                                            <option>PM</option>
+                                        </select>
+
+                                        <span>{" - "}</span>
+                                        
+                                        {/* end time */}
                                         <select>{
                                             [...Array(12).keys()].map(index =>
                                                 <option 
@@ -115,21 +141,7 @@ const ChangeTimeSlots = () => {
                                             <option>PM</option>
                                         </select>
                                         
-                                        <label>End</label>
-                                        <select>{
-                                            [...Array(12).keys()].map(index =>
-                                                <option 
-                                                    key={index} 
-                                                    value={index+1}
-                                                >{index+1}</option>
-                                            )
-                                        }</select>
-                                        <select>
-                                            <option>AM</option>
-                                            <option>PM</option>
-                                        </select>
-                                        
-                                        <button onClick={() => addData(index)}>Add</button>
+                                        <button onClick={() => addData(index)}>+</button>
                                     </div>
                                     
                                     { !!time.length &&
@@ -145,6 +157,7 @@ const ChangeTimeSlots = () => {
                         <button 
                             onClick={submitData}
                             disabled={isSubmitting}
+                            className='update-slots-btn'
                         >Update Time Slots</button>
                     </Fragment>
                 )
