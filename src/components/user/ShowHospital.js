@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Chart from '../admin/Chart';
 import api from '../../utils/api';
 import url from '../../utils/url';
+import { Link } from 'react-router-dom';
 
 const ShowHospital=({ match }) => {
     
@@ -51,7 +52,10 @@ const ShowHospital=({ match }) => {
                     )
                 }
                 </div><div className="d-flex justify-content-center">
-                <button className="book-btn btn">Book an appointment</button>
+                    <Link 
+                        to={`${url.bookAppointment}/${data._id}`} 
+                        className="book-btn btn"
+                    >Book an appointment</Link>
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@ export default {
     userProfile: '/user/profile',
     userProfileEdit: '/user/profile/edit',
     showHospital:'/user/hospital',
+    bookAppointment: '/book/appointment',
 
     baseImageUrl: "https://api-donowall.herokuapp.com/api/admin/profile/photo"
 }

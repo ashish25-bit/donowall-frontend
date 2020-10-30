@@ -45,6 +45,7 @@ function Home() {
                                 <div className='info-con'>
                                     <p>{name}</p>
                                     <Link to={`${url.showHospital}/${_id}`}>Visit &gt;&gt;</Link>
+                                    <Link to={`${url.bookAppointment}/${_id}`}>Book Appointment &gt;&gt;</Link>
                                 </div>
                             </div>
                         ))

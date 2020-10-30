@@ -154,13 +154,15 @@
 /*
     SLOTS PAGE ADMIN
 */
-.slots-page .weekday {
+.slots-page .weekday,
+.book-appointments .weekday {
     margin-bottom: 20px;
     background: #f2f2f2;
     padding: 10px 15px;
     border-radius: 5px;
 }
-.slots-page .weekday section {
+.slots-page .weekday section,
+.book-appointments .weekday section {
     display: inline-block;
     margin-right: 5px;
     background: var(--main-red);

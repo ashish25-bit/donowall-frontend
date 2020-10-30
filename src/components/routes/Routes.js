@@ -17,6 +17,7 @@ import EditImage from '../admin/EditImage';
 import NotFound from '../layouts/NotFound';
 import ShowHospital from '../user/ShowHospital';
 import ChangeTimeSlots from '../admin/ChangeTimeSlots';
+import BookAppointment from '../user/BookAppointment';
 import url from '../../utils/url';
 
 const Routes = () => {
@@ -30,6 +31,7 @@ const Routes = () => {
                 <UserPrivateRoute exact path={url.userProfile} component={UserProfile} />
                 <UserPrivateRoute exact path={url.userProfileEdit} component={UserProfileEdit} />
                 <UserPrivateRoute exact path={`${url.showHospital}/:id`} component={ShowHospital}/>
+                <UserPrivateRoute exact path={`${url.bookAppointment}/:id`} component={BookAppointment} />
                 <AdminPrivateRoute exact path={url.adminProfile} component={AdminProfile} />
                 <AdminPrivateRoute exact path={url.adminProfileEdit} component={AdminProfileEdit} />
                 <AdminPrivateRoute exact path={url.editBloodData} component={EditBloodData} />
