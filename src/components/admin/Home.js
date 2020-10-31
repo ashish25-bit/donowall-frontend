@@ -10,6 +10,7 @@ import api from '../../utils/api';
 const Home = ({ user, changeAcceptingStatus }) => {
     const [loading, setLoading] = useState(true);
     const [slots, setSlots] = useState(null);
+    const [appointments, setAppointments] = useState(null);
     
     const status = user.isAcceptingAppointment;
 
@@ -20,6 +21,9 @@ const Home = ({ user, changeAcceptingStatus }) => {
                 const res = await api.get('/admin/slot');
                 if (res.data)
                     setSlots(res.data.slots);
+
+                const res2 = await api.get('/admin/appointments');
+                setAppointments(res2.data);
             }
             catch (err) {
                 console.log(err);
@@ -77,7 +81,23 @@ const Home = ({ user, changeAcceptingStatus }) => {
 
                 </div>
                 <div className='appointments'>
-                    <h3>No Appointments</h3>
+                    {
+                        !loading ? (
+                            !appointments || !appointments.length ? (
+                                <h2>No Appointments</h2>
+                            ) : (
+                                appointments.map((
+                                    { user: { f_name, l_name }, date, weekDay, time }, index) => (
+                                    <div key={index}>
+                                        <h3>{f_name} {l_name}</h3>
+                                        <p>{date}, {weekDay} ({time[0]} - {time[1]})</p>
+                                    </div>
+                                ))
+                            )
+                        ) : (
+                            <div>Loading...</div>
+                        )
+                    }
                 </div>
             </div>
             
