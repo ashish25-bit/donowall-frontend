@@ -180,3 +180,9 @@ export const changeAcceptingStatus = () => async dispatch => {
         return 500;
     }
 }
+
+export const bookingDone = history => dispatch => {
+    dispatch({ type: UPDATE_PROFILE });
+    dispatch(loadUser());
+    history.push(url.homeUser);
+}

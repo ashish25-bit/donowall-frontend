@@ -1,10 +1,16 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import api from '../../utils/api';
 import { json } from '../../utils/headers';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import url from '../../utils/url';
+import useTitle from '../../utils/useTitle';
+import { bookingDone } from '../../actions/auth';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const BookAppointment = ({ match, history }) => {
+const BookAppointment = ({ match, history, bookingDone }) => {
+
+    useTitle('Book Appointment');
 
     const [loading, setLoading] = useState(true);
     const [hospital, setHospital] = useState(null);
@@ -55,7 +61,7 @@ const BookAppointment = ({ match, history }) => {
         try {
             const res = await api.post('/user/appointment/slot', data, json);
             console.log(res);
-            return history.push(url.homeUser);
+            bookingDone(history);
         }
         catch (err) {
             if (err.response !== undefined) 
@@ -123,10 +129,13 @@ const BookAppointment = ({ match, history }) => {
                                     <small>{date}</small> <br/>
                                     {   
                                         time.map(([ start, end ], index_time) => (
-                                            <section key={index_time}>
-                                                <small
-                                                    onClick={() => selectTime(index, index_time)}
-                                                >{start} - {end}</small>
+                                            <section 
+                                                onClick={
+                                                    () => selectTime(index, index_time)
+                                                }
+                                                key={index_time}
+                                            >
+                                                <small>{start} - {end}</small>
                                             </section>
                                         ))
                                     }
@@ -140,4 +149,8 @@ const BookAppointment = ({ match, history }) => {
     )
 }
 
-export default BookAppointment;
+BookAppointment.propTypes = {
+    bookingDone: PropTypes.func.isRequired
+}
+
+export default connect(null, { bookingDone })(withRouter(BookAppointment));
