@@ -61,7 +61,7 @@ export const login = (formData, type) => async dispatch => {
         dispatch(loadUser());
     }
     catch (err) {
-        if (err.response.data !== undefined)
+        if (err.response !== undefined)
             console.log(err.response.data);
         else 
             console.log(err.message);
@@ -88,7 +88,7 @@ export const signup = (formData, type) => async dispatch => {
         dispatch(loadUser());
     }
     catch (err) {
-        if (err.response.data !== undefined)
+        if (err.response !== undefined)
             console.log(err.response.data);
         else 
             console.log(err.message);
@@ -114,7 +114,7 @@ export const updateProfile = (formData, history, type) => async dispatch => {
         dispatch(loadUser());
     }
     catch (err) {
-        if (err.response.data !== undefined)
+        if (err.response !== undefined)
             console.log(err.response.data);
         else 
             console.log(err.message);
@@ -132,7 +132,7 @@ export const changeImage = formData => async dispatch => {
         dispatch(loadUser());
     }
     catch (err) {
-        if (err.response.data !== undefined)
+        if (err.response !== undefined)
             console.log(err.response.data);
         else 
             console.log(err.message);
@@ -148,7 +148,7 @@ export const changeBloodData = data => async dispatch => {
         dispatch(loadUser());
     }
     catch (err) {
-        if (err.response.data !== undefined)
+        if (err.response !== undefined)
             console.log(err.response.data);
         else 
             console.log(err.message);
@@ -174,7 +174,7 @@ export const changeAcceptingStatus = () => async dispatch => {
         return res.data;
     }
     catch (err) {
-        if (err.response.data !== undefined)
+        if (err.response !== undefined)
             console.log(err.response.data);
         console.log(err.message);
         return 500;
