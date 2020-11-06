@@ -18,6 +18,7 @@ import NotFound from '../layouts/NotFound';
 import ShowHospital from '../user/ShowHospital';
 import ChangeTimeSlots from '../admin/ChangeTimeSlots';
 import BookAppointment from '../user/BookAppointment';
+import UserAppointment from '../admin/User';
 import url from '../../utils/url';
 
 const Routes = () => {
@@ -37,6 +38,7 @@ const Routes = () => {
                 <AdminPrivateRoute exact path={url.editBloodData} component={EditBloodData} />
                 <AdminPrivateRoute exact path={url.changeTimeSlot} component={ChangeTimeSlots} />
                 <AdminPrivateRoute exact path={url.editImage} component={EditImage} />
+                <AdminPrivateRoute eaxt path={`${url.userAppointment}/:id`} component={UserAppointment} />
                 <Route path='*' component={NotFound} />
             </Switch>
         </div>

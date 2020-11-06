@@ -6,6 +6,7 @@ export default {
     editBloodData: '/edit/blood/data',
     editImage: '/edit/image',
     changeTimeSlot: '/change/time/slot',
+    userAppointment: '/user/appointment',
     
     homeUser: '/user/home',
     userProfile: '/user/profile',

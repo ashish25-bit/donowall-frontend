@@ -272,7 +272,8 @@ button:disabled {
 */
 .profile-container .info-container .fieldset,
 .profile-edit .fieldset,
-.edit-blood-container .fieldset {
+.edit-blood-container .fieldset,
+.user-appointment-page .fieldset {
     position: relative;
     border: 1px solid var(--lable-color);
     padding: 10px 15px;
@@ -281,7 +282,8 @@ button:disabled {
 }
 .profile-container .info-container .fieldset span,
 .profile-edit .fieldset span,
-.edit-blood-container .fieldset span {
+.edit-blood-container .fieldset span,
+.user-appointment-page .fieldset span {
     position: absolute;
     top: -13px;
     left: 10px;

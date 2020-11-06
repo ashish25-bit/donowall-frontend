@@ -87,9 +87,13 @@ const Home = ({ user, changeAcceptingStatus }) => {
                                 <h2>No Appointments</h2>
                             ) : (
                                 appointments.map((
-                                    { user: { f_name, l_name }, date, weekDay, time }, index) => (
+                                    { user: { f_name, l_name, _id }, date, weekDay, time }, index) => (
                                     <div key={index}>
-                                        <h3>{f_name} {l_name}</h3>
+                                        <h3>
+                                            <Link to={`${url.userAppointment}/${_id}`}>
+                                                {f_name} {l_name}
+                                            </Link>
+                                        </h3>
                                         <p>{date}, {weekDay} ({time[0]} - {time[1]})</p>
                                     </div>
                                 ))

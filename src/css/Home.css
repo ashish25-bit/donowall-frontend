@@ -206,3 +206,11 @@
     padding: 15px 0;
     font-weight: bolder;
 }
+
+/*
+    USER APPOINTMENT PAGE
+*/
+.user-appointment-page .info,
+.user-appointment-page .appointments {
+    margin-bottom: 50px;
+}
