@@ -138,9 +138,22 @@
 
 .admin.home-container .slots-container {
     max-height: 150px;
-    overflow: hidden;
-    margin-bottom: 15px;
+    overflow-y: auto;
+    margin: 15px 0;
 }
+.admin.home-container .slots-container::-webkit-scrollbar {
+	width: 10px;
+}
+.admin.home-container .slots-container::-webkit-scrollbar-track {
+    background: #ddd; 
+}  
+.admin.home-container .slots-container::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+.admin.home-container .slots-container::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
 .admin.home-container .slots-container div {
     margin: 10px 0;
 }
